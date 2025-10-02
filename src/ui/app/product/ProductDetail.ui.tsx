@@ -1,7 +1,7 @@
 import { Product, useProductStore } from '@core/store/product-store';
 import { colors } from '@core/styles/colors';
 import { goBack } from '@core/utils/helpers';
-import { s } from '@core/utils/scale';
+import { rfs, s } from '@core/utils/scale';
 import { useRoute } from '@react-navigation/native';
 import { ArrowLeft, Calendar, DollarSign, Trash2 } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
@@ -21,7 +21,8 @@ const { width } = Dimensions.get('window');
 
 export default function ProductDetailUi() {
   const router = useRoute<any>();
-  const id = router?.params?.id as string;
+  const id = router?.params?.productId as string;
+
   const { products, removeProduct } = useProductStore();
   const [product, setProduct] = useState<Product | null>(null);
 
@@ -187,27 +188,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: s(20),
     paddingVertical: s(16),
-    borderBottomWidth: 1,
+    borderBottomWidth: s(1),
     borderBottomColor: colors.border,
   },
   backButton: {
     padding: s(8),
-    marginLeft: -8,
+    marginLeft: s(-8),
   },
   headerTitle: {
-    fontSize: 18,
+    fontSize: rfs(18),
     fontWeight: '600',
     color: colors.text,
     flex: 1,
     textAlign: 'center',
-    marginHorizontal: 16,
+    marginHorizontal: s(16),
   },
   headerActions: {
     flexDirection: 'row',
   },
   actionButton: {
-    padding: 8,
-    marginRight: -8,
+    padding: s(8),
+    marginRight: s(-8),
   },
   content: {
     flex: 1,
@@ -230,88 +231,88 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    padding: 20,
+    padding: s(20),
   },
   priceTag: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.primary,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
+    paddingHorizontal: s(12),
+    paddingVertical: s(8),
+    borderRadius: s(20),
   },
   priceTagText: {
     color: colors.text,
-    fontSize: 16,
+    fontSize: rfs(16),
     fontWeight: '700',
-    marginLeft: 4,
+    marginLeft: s(4),
   },
   detailsContainer: {
-    padding: 20,
+    padding: s(20),
   },
   titleSection: {
-    marginBottom: 24,
+    marginBottom: s(24),
   },
   productName: {
-    fontSize: 28,
+    fontSize: rfs(28),
     fontWeight: 'bold',
     color: colors.text,
-    marginBottom: 8,
-    lineHeight: 36,
+    marginBottom: s(8),
+    lineHeight: s(36),
   },
   productPrice: {
-    fontSize: 24,
+    fontSize: rfs(24),
     fontWeight: '600',
     color: colors.primary,
   },
   infoCard: {
     backgroundColor: colors.card,
-    borderRadius: 16,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: s(16),
+    padding: s(20),
+    marginBottom: s(20),
   },
   infoRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 4,
+    paddingVertical: s(4),
   },
   infoIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: s(40),
+    height: s(40),
+    borderRadius: s(20),
     backgroundColor: colors.background,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 16,
+    marginRight: s(16),
   },
   infoContent: {
     flex: 1,
   },
   infoLabel: {
-    fontSize: 14,
+    fontSize: rfs(14),
     color: '#9CA3AF',
-    marginBottom: 2,
+    marginBottom: s(2),
   },
   infoValue: {
-    fontSize: 16,
+    fontSize: rfs(16),
     fontWeight: '600',
     color: colors.text,
   },
   divider: {
-    height: 1,
+    height: s(1),
     backgroundColor: colors.border,
-    marginVertical: 16,
+    marginVertical: s(16),
   },
   statsCard: {
     backgroundColor: colors.card,
-    borderRadius: 16,
-    padding: 20,
+    borderRadius: s(16),
+    padding: s(20),
   },
   statsTitle: {
-    fontSize: 18,
+    fontSize: rfs(18),
     fontWeight: '600',
     color: colors.text,
-    marginBottom: 16,
+    marginBottom: s(16),
   },
   statsGrid: {
     flexDirection: 'row',
@@ -321,56 +322,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statValue: {
-    fontSize: 20,
+    fontSize: rfs(20),
     fontWeight: '700',
     color: colors.primary,
-    marginBottom: 4,
+    marginBottom: s(4),
   },
   statLabel: {
-    fontSize: 14,
+    fontSize: rfs(14),
     color: '#9CA3AF',
   },
   bottomActions: {
-    padding: 20,
-    borderTopWidth: 1,
+    padding: s(20),
+    borderTopWidth: s(1),
     borderTopColor: colors.border,
   },
   deleteButton: {
     backgroundColor: '#EF4444',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: s(12),
+    padding: s(16),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   deleteButtonText: {
     color: colors.text,
-    fontSize: 16,
+    fontSize: rfs(16),
     fontWeight: '600',
-    marginLeft: 8,
+    marginLeft: s(8),
   },
   notFoundContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 40,
+    padding: s(40),
     backgroundColor: colors.background,
   },
   notFoundText: {
-    fontSize: 18,
+    fontSize: rfs(18),
     color: '#9CA3AF',
     textAlign: 'center',
-    marginBottom: 24,
+    marginBottom: s(24),
   },
   goBackButton: {
     backgroundColor: colors.primary,
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
+    paddingHorizontal: s(24),
+    paddingVertical: s(12),
+    borderRadius: s(8),
   },
   goBackButtonText: {
     color: colors.text,
-    fontSize: 16,
+    fontSize: rfs(16),
     fontWeight: '600',
   },
 });
